@@ -43,7 +43,7 @@ const NavBar = () => {
             ) : (
               <Button color="inherit" component={Link} to="/profile/:id" className={classes.linkButton} onClick={() => {}}>
                 {!isMobile && <>My Movies &nbsp;</>}
-                <Avatar style={{ width: 30, height: 30 }} alt="Profile" src="../../../public/avatar.jpg" />
+                <Avatar style={{ width: 30, height: 30 }} alt="Profile" src="/avatar.jpg" />
               </Button>
             )}
           </div>
