@@ -5,10 +5,12 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/styles';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useGetGenresQuery } from '../../services/TMDB';
 import useStyles from './styles';
 import genreIcons from '../../assets/assets/genres';
+import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 
 const categories = [
   { label: 'Popular', value: 'popular' },
@@ -20,9 +22,11 @@ const redLogo = '/filmpire-dark.png';
 const blueLogo = '/filmpire-light.png';
 
 const Sidebar = ({ setMobileOpen }) => {
+  const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
   const theme = useTheme();
   const classes = useStyles();
   const { data, isFetching } = useGetGenresQuery();
+  const dispatch = useDispatch();
   return (
     <>
       <Link to="/" className={classes.imageLink}>
@@ -35,9 +39,9 @@ const Sidebar = ({ setMobileOpen }) => {
       <Divider />
       <List>
         <ListSubheader>Categories</ListSubheader>
-        {categories.map(({ label, id }) => (
+        {categories.map(({ label, value }) => (
           <Link key={label} className={classes.link} to="/">
-            <ListItem onClick={() => {}} button>
+            <ListItem onClick={() => dispatch(selectGenreOrCategory(value))} button>
               <ListItemIcon>
                 <img src={genreIcons[label.toLowerCase()]} className={classes.genreImage} height={30} alt="genre" />
               </ListItemIcon>
@@ -56,7 +60,7 @@ const Sidebar = ({ setMobileOpen }) => {
         )
           : data.genres.map(({ name, id }) => (
             <Link key={name} className={classes.link} to="/">
-              <ListItem onClick={() => {}} button>
+              <ListItem onClick={() => dispatch(selectGenreOrCategory(id))} button>
                 <ListItemIcon>
                   <img src={genreIcons[name.toLowerCase()]} className={classes.genreImage} height={30} alt="genre" />
                 </ListItemIcon>
