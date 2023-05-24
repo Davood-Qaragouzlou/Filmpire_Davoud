@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable max-len */
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import {
@@ -34,7 +35,7 @@ const Movies = () => {
     );
   }
 
-  if (error) return 'An error has occured.';
+  if (error) return `an error has occurred: ${JSON.stringify(error)}`;
   return (
     <div>
       <MovieList movies={data} />
