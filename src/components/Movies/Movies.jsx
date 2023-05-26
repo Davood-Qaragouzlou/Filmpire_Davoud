@@ -1,19 +1,19 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable max-len */
 /* eslint-disable no-console */
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
   Box, CircularProgress, useMediaQuery, Typography,
 } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { useGetMoviesQuery } from '../../services/TMDB';
-import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
+// import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 import MovieList from '../MovieList/MovieList';
 
 const Movies = () => {
   const [page, setPage] = useState(1);
   const { genreIdOrCategoryName, searchQuery } = useSelector((state) => state.currentGenreOrCategory);
-  const { data, error, isFetching } = useGetMoviesQuery(genreIdOrCategoryName, page, searchQuery);
+  const { data, error, isFetching } = useGetMoviesQuery({ genreIdOrCategoryName, page, searchQuery });
 
   if (isFetching) {
     return (
@@ -35,7 +35,7 @@ const Movies = () => {
     );
   }
 
-  if (error) return `an error has occurred: ${JSON.stringify(error)}`;
+  if (error) return `An error has occurred: ${JSON.stringify(error)}`;
   return (
     <div>
       <MovieList movies={data} />

@@ -40,7 +40,7 @@ const Sidebar = ({ setMobileOpen }) => {
       <List>
         <ListSubheader>Categories</ListSubheader>
         {categories.map(({ label, value }) => (
-          <Link key={label} className={classes.link} to="/">
+          <Link key={value} className={classes.link} to="/">
             <ListItem onClick={() => dispatch(selectGenreOrCategory(value))} button>
               <ListItemIcon>
                 <img src={genreIcons[label.toLowerCase()]} className={classes.genreImage} height={30} alt="genre" />
