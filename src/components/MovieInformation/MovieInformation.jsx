@@ -13,14 +13,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 
 import useStyles from './styles';
-import { useGetMovieQuery } from '../../services/TMDB';
+import { useGetMovieQuery, useGetRecommendationsQuery } from '../../services/TMDB';
 import genreIcons from '../../assets/assets/genres'
 import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
+import MovieList from "../MovieList/MovieList";
 
 const MovieInformation = () => {
   const { id } = useParams();
   const classes = useStyles();
   const { data, isFetching, error } = useGetMovieQuery(id);
+  const { data: recommendations, isFetching: iseRecommendationsFetching } = useGetRecommendationsQuery({list: '/recommendations', movie_id: id});
   const dispatch = useDispatch();
   const isMovieFavorited = true;
   const isMovieWatchlisted = true;
@@ -133,6 +135,16 @@ const MovieInformation = () => {
             </div>
           </Grid>
       </Grid>
+      <Box marginTop='5rem' width='100%'>
+                    <Typography variant='h3' gutterBottom align='center'>
+                      You Might Also Like
+                    </Typography>
+                    {/* Loop through the recommended movies */}
+                    {recommendations
+                    ? <MovieList movies={recommendations} numberOfMovies={12}/>
+                    : <Box>Sorry, nothing was found.</Box>
+                    }
+      </Box>
     </Grid>
   );
 };
