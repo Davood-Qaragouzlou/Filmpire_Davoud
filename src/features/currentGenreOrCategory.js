@@ -8,7 +8,7 @@ export const genreOrCategory = createSlice({
     page: 1,
     searchQuery: '',
   },
-  reducers: { // whenever we have a reducer we have to attach it to the store
+  reducers: {
     selectGenreOrCategory: (state, action) => {
       state.genreIdOrCategoryName = action.payload;
       state.searchQuery = '';
@@ -20,4 +20,5 @@ export const genreOrCategory = createSlice({
 });
 
 export const { selectGenreOrCategory, searchMovie } = genreOrCategory.actions;
+
 export default genreOrCategory.reducer;

@@ -15,11 +15,14 @@ const authSlice = createSlice({
       state.user = action.payload;
       state.isAuthenticated = true;
       state.sessionId = localStorage.getItem('session_id');
+
       localStorage.setItem('accountId', action.payload.id);
     },
   },
 });
 
 export const { setUser } = authSlice.actions;
+
 export default authSlice.reducer;
+
 export const userSelector = (state) => state.user;

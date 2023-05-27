@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+
 import { configureStore } from '@reduxjs/toolkit';
 import { tmdbApi } from '../services/TMDB';
 import genreOrCategoryReducer from '../features/currentGenreOrCategory';

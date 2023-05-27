@@ -50,7 +50,7 @@ export default makeStyles((theme) => ({
   },
   castImage: {
     width: '100%',
-    maxwidth: '7em',
+    maxWidth: '7em',
     height: '8em',
     objectFit: 'cover',
     borderRadius: '10px',
@@ -68,7 +68,7 @@ export default makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  videos: {
+  video: {
     width: '50%',
     height: '50%',
     [theme.breakpoints.down('sm')]: {
@@ -76,4 +76,4 @@ export default makeStyles((theme) => ({
       height: '90%',
     },
   },
-}))
+}));
