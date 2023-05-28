@@ -1,16 +1,23 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable eol-last */
 /* eslint-disable no-multiple-empty-lines */
-import React from 'react';
-import CssBaseline from '@mui/material/CssBaseline';
+import React, { useRef } from 'react';
+import { CssBaseline } from '@mui/material';
 import { Route, Switch } from 'react-router-dom';
-import {
-  Actors, MovieInformation, Profile, Movies, NavBar,
-} from '.';
+
 import useStyles from './styles';
+import useAlan from './Alan';
+
+import {
+  Actors, MovieInformation, Movies, NavBar, Profile,
+} from '.';
 
 const App = () => {
   const classes = useStyles();
+  const alanBtnContainer = useRef();
+
+  useAlan();
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -32,9 +39,9 @@ const App = () => {
           </Route>
         </Switch>
       </main>
+      <div ref={alanBtnContainer} />
     </div>
   );
 };
-
 
 export default App;
