@@ -1,7 +1,7 @@
 # Welcome to filmpire-davoud 👋
 ![Version](https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000)
 
-> Enjoy finding the latest movies in filmpire
+> Enjoy finding the latest movies in filmpire. Click on Demo below to see the deployed website.
 
 ### ✨ [Demo](https://filmpire-davoud.netlify.app/)
 
